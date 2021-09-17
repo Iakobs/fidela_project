@@ -21,11 +21,15 @@ _global_script_class_icons={
 [application]
 
 config/name="fidela_project"
-config/icon="res://icon.png"
+config/icon="res://fidela_icon.png"
 
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [physics]
 
