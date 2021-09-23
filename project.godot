@@ -9,19 +9,48 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "Fidela",
+"language": "GDScript",
+"path": "res://scripts/characters/fidela/Fidela.gd"
+}, {
+"base": "Reference",
+"class": "FruitFactory",
+"language": "GDScript",
+"path": "res://scripts/fruits/FruitFactory.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Spatial",
+"class": "Horn",
+"language": "GDScript",
+"path": "res://scripts/characters/fidela/Horn.gd"
+}, {
+"base": "Reference",
+"class": "Queue",
+"language": "GDScript",
+"path": "res://scripts/utils/Queue.gd"
 } ]
 _global_script_class_icons={
-"GitAPI": ""
+"Fidela": "",
+"FruitFactory": "",
+"GitAPI": "",
+"Horn": "",
+"Queue": ""
 }
 
 [application]
 
 config/name="fidela_project"
+run/main_scene="res://scenes/test/TestScene.tscn"
 config/icon="res://fidela_icon.png"
+
+[autoload]
+
+Global="*res://scripts/global.gd"
 
 [gdnative]
 
