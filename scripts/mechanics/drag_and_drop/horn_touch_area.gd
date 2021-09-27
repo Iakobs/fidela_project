@@ -10,7 +10,16 @@ func setup(_slots: HornSlots, _fruit_parent: Node):
 	slots = _slots
 	fruit_parent = _fruit_parent
 
-func queue_fruit(fruit: Node):
+func get_fruit_to_drag() -> Area:
+	if not fruit_queue.empty():
+		var path_to_fruit = fruit_queue[0].remote_path
+		var fruit = fruit_parent.get_node(path_to_fruit)
+		if fruit is Area:
+			return fruit
+	
+	return null
+
+func queue_fruit(fruit: Area):
 	if (fruit_queue.size() == slots.size()):
 		return
 	

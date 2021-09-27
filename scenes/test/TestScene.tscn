@@ -4,22 +4,7 @@
 [ext_resource path="res://scenes/test/test_scene.gd" type="Script" id=2]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/horn_touch_area.gd" type="Script" id=3]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/touch_area_manager.gd" type="Script" id=4]
-
-[sub_resource type="Animation" id=1]
-resource_name = "fidela_move"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Fidela:translation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 5, 10 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 8.126, 0, 0 ), Vector3( -2.89014, 0, 0 ), Vector3( 8.126, 0, 0 ) ]
-}
+[ext_resource path="res://scripts/mechanics/drag_and_drop/drag_drop_controller.gd" type="Script" id=5]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.643013, 0.19864, 0.262275 )
@@ -27,21 +12,23 @@ extents = Vector3( 0.643013, 0.19864, 0.262275 )
 [node name="TestScene" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="Fidela" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 8.126, 0, 0 )
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.1514 )
+light_color = Color( 0.905882, 0.776471, 0.596078, 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.1775 )
 keep_aspect = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fidela_move = SubResource( 1 )
+[node name="Fidela" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 8.126, 0, 0 )
 
 [node name="TouchArea" type="Spatial" parent="."]
 script = ExtResource( 4 )
 
 [node name="LeftHornTouchArea" type="Area" parent="TouchArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.66557, -0.361769, 1.94607 )
+collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TouchArea/LeftHornTouchArea"]
@@ -49,7 +36,11 @@ shape = SubResource( 2 )
 
 [node name="RightHornTouchArea" type="Area" parent="TouchArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.666, 0.362, 1.946 )
+collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TouchArea/RightHornTouchArea"]
 shape = SubResource( 2 )
+
+[node name="DragDropController" type="Node" parent="TouchArea"]
+script = ExtResource( 5 )

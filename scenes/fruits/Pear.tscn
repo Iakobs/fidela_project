@@ -6,6 +6,8 @@
 radius = 0.21662
 
 [node name="Pear" instance=ExtResource( 1 )]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 shape = SubResource( 1 )
