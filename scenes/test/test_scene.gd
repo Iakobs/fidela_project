@@ -27,10 +27,10 @@ func _ready():
 	test()
 
 func add_fruit(fruit: Node, horn: String):
-		slots[horn].queue(fruit)
+		slots[horn].queue_fruit(fruit)
 
 func remove_fruit(horn: String):
-	slots[horn].dequeue()
+	slots[horn].dequeue_fruit()
 
 func test():
 	should_not_fail_when_adding_and_removing_more_fruits_than_allowed("left_slots")
