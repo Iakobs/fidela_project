@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Spatial",
-"class": "Fidela",
-"language": "GDScript",
-"path": "res://scripts/characters/fidela/fidela.gd"
-}, {
 "base": "Reference",
 "class": "FruitFactory",
 "language": "GDScript",
@@ -33,13 +28,18 @@ _global_script_classes=[ {
 "class": "HornTouchArea",
 "language": "GDScript",
 "path": "res://scripts/mechanics/drag_and_drop/horn_touch_area.gd"
+}, {
+"base": "Reference",
+"class": "TouchAreaProps",
+"language": "GDScript",
+"path": "res://scripts/mechanics/drag_and_drop/touch_area_props.gd"
 } ]
 _global_script_class_icons={
-"Fidela": "",
 "FruitFactory": "",
 "GitAPI": "",
 "HornSlots": "",
-"HornTouchArea": ""
+"HornTouchArea": "",
+"TouchAreaProps": ""
 }
 
 [application]

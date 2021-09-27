@@ -1,6 +1,4 @@
-extends Spatial
-
-class_name Fidela
+extends Node
 
 onready var left_horn = $LeftHorn
 onready var right_horn = $RightHorn

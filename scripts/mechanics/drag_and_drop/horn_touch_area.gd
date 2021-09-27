@@ -24,7 +24,8 @@ func dequeue_fruit():
 	if fruit_queue.empty():
 		return
 	
-	fruit_parent.remove_child(fruit_parent.get_node(fruit_queue[0].remote_path))
+	var fruit_to_be_removed = fruit_parent.get_node(fruit_queue[0].remote_path)
+	fruit_parent.remove_child(fruit_to_be_removed)
 	
 	var remote_paths = []
 	for remote_reference in fruit_queue.slice(1, fruit_queue.size()):
