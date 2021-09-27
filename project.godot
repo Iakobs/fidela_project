@@ -12,34 +12,34 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Fidela",
 "language": "GDScript",
-"path": "res://scripts/characters/fidela/Fidela.gd"
+"path": "res://scripts/characters/fidela/fidela.gd"
 }, {
 "base": "Reference",
 "class": "FruitFactory",
 "language": "GDScript",
-"path": "res://scripts/fruits/FruitFactory.gd"
+"path": "res://scripts/fruits/fruit_factory.gd"
 }, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
 }, {
-"base": "Spatial",
-"class": "Horn",
+"base": "Node",
+"class": "HornSlots",
 "language": "GDScript",
-"path": "res://scripts/characters/fidela/Horn.gd"
+"path": "res://scripts/utils/horn_slots.gd"
 }, {
-"base": "Reference",
-"class": "Queue",
+"base": "Area",
+"class": "HornTouchArea",
 "language": "GDScript",
-"path": "res://scripts/utils/Queue.gd"
+"path": "res://scripts/mechanics/drag_and_drop/horn_touch_area.gd"
 } ]
 _global_script_class_icons={
 "Fidela": "",
 "FruitFactory": "",
 "GitAPI": "",
-"Horn": "",
-"Queue": ""
+"HornSlots": "",
+"HornTouchArea": ""
 }
 
 [application]

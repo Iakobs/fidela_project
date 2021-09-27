@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/src/triceratops.glb" type="PackedScene" id=1]
-[ext_resource path="res://scripts/characters/fidela/Fidela.gd" type="Script" id=3]
-[ext_resource path="res://scripts/characters/fidela/Horn.gd" type="Script" id=4]
+[ext_resource path="res://scripts/utils/horn_slots.gd" type="Script" id=2]
+[ext_resource path="res://scripts/characters/fidela/fidela.gd" type="Script" id=3]
 
 [node name="Fidela" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
 [node name="LeftHorn" type="Spatial" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390366, 1.88973, 3.42457 )
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Tip" type="RemoteTransform" parent="LeftHorn" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0443602, -0.159695, 0.40811 )
@@ -27,7 +27,7 @@ update_scale = false
 
 [node name="RightHorn" type="Spatial" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39, 1.89, 3.425 )
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 
 [node name="Tip" type="RemoteTransform" parent="RightHorn" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.044, -0.16, 0.408 )
