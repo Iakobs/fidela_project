@@ -5,20 +5,18 @@ const DraggingArea = preload("res://scenes/drag_and_drop/DraggingArea.tscn")
 export (float) var ray_length = 100
 
 var camera: Camera
-var draggable: Area
-var draggable_original_position: Vector3
+var draggable: Fruit
 var dragging_area: Area
 
 func _ready():
 	camera = get_tree().get_root().get_camera()
 	set_physics_process(false)
 
-func drag_start(_draggable: Area):
+func drag_start(_draggable: Fruit):
 	if not draggable:
 		set_physics_process(true)
 		
 		draggable = _draggable
-		draggable_original_position = draggable.transform.origin
 		
 		setup_dragging_area()
 
@@ -26,7 +24,7 @@ func drag_stop():
 	if draggable:
 		set_physics_process(false)
 		
-		draggable.set_translation(draggable_original_position)
+		draggable.set_translation(draggable.original_position)
 		draggable = null
 		
 		tear_down_dragging_area()

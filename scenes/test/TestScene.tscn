@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/fidela/Fidela.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/test/test_scene.gd" type="Script" id=2]
@@ -6,19 +6,36 @@
 [ext_resource path="res://scripts/mechanics/drag_and_drop/touch_area_manager.gd" type="Script" id=4]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/drag_drop_controller.gd" type="Script" id=5]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.227451, 0.360784, 0.207843, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 20, 15, 0.25 )
+
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.643013, 0.19864, 0.262275 )
+
+[sub_resource type="CapsuleShape" id=4]
+
+[sub_resource type="CapsuleMesh" id=5]
 
 [node name="TestScene" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20.1514 )
+transform = Transform( 0.878842, -0.329454, -0.345104, 0, 0.723317, -0.690516, 0.477113, 0.606855, 0.635681, 0, 0, 20.1514 )
 light_color = Color( 0.905882, 0.776471, 0.596078, 1 )
+shadow_enabled = true
+shadow_color = Color( 0.439216, 0.439216, 0.439216, 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.1775 )
 keep_aspect = 0
+
+[node name="Floor" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = null
 
 [node name="Fidela" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 8.126, 0, 0 )
@@ -32,7 +49,7 @@ collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TouchArea/LeftHornTouchArea"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="RightHornTouchArea" type="Area" parent="TouchArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.666, 0.362, 1.946 )
@@ -40,7 +57,20 @@ collision_mask = 0
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="TouchArea/RightHornTouchArea"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="DragDropController" type="Node" parent="TouchArea"]
 script = ExtResource( 5 )
+
+[node name="CustomerTouchArea" type="Area" parent="TouchArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66204, 0, 1.93109 )
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="TouchArea/CustomerTouchArea"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Customer" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.65989, 0, 1.93109 )
+mesh = SubResource( 5 )
+material/0 = null

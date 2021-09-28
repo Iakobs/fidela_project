@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "Customer",
+"language": "GDScript",
+"path": "res://scripts/mechanics/drag_and_drop/customer_touch_area.gd"
+}, {
+"base": "Area",
+"class": "Fruit",
+"language": "GDScript",
+"path": "res://scripts/fruits/fruit.gd"
+}, {
 "base": "Reference",
 "class": "FruitFactory",
 "language": "GDScript",
@@ -35,6 +45,8 @@ _global_script_classes=[ {
 "path": "res://scripts/mechanics/drag_and_drop/touch_area_props.gd"
 } ]
 _global_script_class_icons={
+"Customer": "",
+"Fruit": "",
 "FruitFactory": "",
 "GitAPI": "",
 "HornSlots": "",
