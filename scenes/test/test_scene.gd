@@ -9,6 +9,10 @@ var get_banana = funcref(FruitFactory, "get_banana")
 
 onready var touch_area = $TouchArea
 onready var fidela = $Fidela
+onready var gui = $"3DGui"
+
+func _enter_tree():
+	add_to_group(EventBus.CONSUMER_GROUP)
 
 func _ready():
 	touch_area.setup(TouchAreaProps.new(
@@ -17,8 +21,31 @@ func _ready():
 		fidela.get_horn_slots(Global.HORNS.RIGHT)
 	))
 	
-	test_drag_drop()
+#	test_drag_drop()
 #	test()
+
+func _subscriptions() -> Array:
+	return [
+		EventBusSubscription.new(
+			EventNamespaces.FruitButtons.BUTTON_PRESSED_EVENT,
+			"_on_fruit_button_pressed"
+		)
+	]
+
+func _on_fruit_button_pressed(payload: Dictionary):
+	var fruit = payload.fruit
+	var horn = payload.horn
+	var fruit_ref
+	match fruit:
+		FruitFactory.FRUITS.APPLE:
+			fruit_ref = get_apple
+		FruitFactory.FRUITS.PEAR:
+			fruit_ref = get_pear
+		FruitFactory.FRUITS.PINEAPPLE:
+			fruit_ref = get_pineapple
+		FruitFactory.FRUITS.BANANA:
+			fruit_ref = get_banana
+	add_fruit(fruit_ref, horn)
 
 func add_fruit(fruit: FuncRef, horn: int):
 	touch_area.add_fruit(fruit.call_func(), horn)

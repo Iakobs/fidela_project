@@ -1,9 +1,9 @@
 extends Reference
 
-const APPLE = preload("res://scenes/fruits/Apple.tscn")
-const PEAR = preload("res://scenes/fruits/Pear.tscn")
-const PINEAPPLE = preload("res://scenes/fruits/Pineapple.tscn")
-const BANANA = preload("res://scenes/fruits/Banana.tscn")
+const Apple = preload("res://scenes/fruits/Apple.tscn")
+const Pear = preload("res://scenes/fruits/Pear.tscn")
+const Pineapple = preload("res://scenes/fruits/Pineapple.tscn")
+const Banana = preload("res://scenes/fruits/Banana.tscn")
 
 class_name FruitFactory
 
@@ -29,12 +29,20 @@ static func get_banana() -> Node:
 static func get_fruit(fruit: int) -> Node:
 	match fruit:
 		FRUITS.APPLE:
-			return APPLE.instance()
+			var fruit_instance = Apple.instance()
+			fruit_instance.fruit_enum = FRUITS.APPLE
+			return fruit_instance
 		FRUITS.PEAR:
-			return PEAR.instance()
+			var fruit_instance = Pear.instance()
+			fruit_instance.fruit_enum = FRUITS.PEAR
+			return fruit_instance
 		FRUITS.PINEAPPLE:
-			return PINEAPPLE.instance()
+			var fruit_instance = Pineapple.instance()
+			fruit_instance.fruit_enum = FRUITS.PINEAPPLE
+			return fruit_instance
 		FRUITS.BANANA:
-			return BANANA.instance()
+			var fruit_instance = Banana.instance()
+			fruit_instance.fruit_enum = FRUITS.BANANA
+			return fruit_instance
 		_:
 			return null

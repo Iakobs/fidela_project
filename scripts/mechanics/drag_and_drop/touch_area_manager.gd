@@ -14,6 +14,7 @@ func setup(props: TouchAreaProps):
 		props.right_horn_slots,
 		props.fruits_parent
 	)
+	customer.wanted_fruits = [FruitFactory.FRUITS.APPLE]
 	
 	left_horn.connect("input_event", self, "_on_horn_input_event", [left_horn])
 	right_horn.connect("input_event", self, "_on_horn_input_event", [right_horn])
@@ -41,8 +42,19 @@ func _on_horn_input_event(_camera, event, _click_position,
 			drag_drop_controller.drag_start(fruit_to_drag)
 
 func _on_customer_entered(area: Area, receiver: Area):
-	if area is Fruit:
-		drag_drop_controller.drag_stop()
-		var horn = area.original_horn
-		horn.dequeue_fruit()
-		area.queue_free()
+	if area is Fruit and receiver is Customer:
+		if is_valid_fruit(area, receiver):
+			process_valid_fruit(area)
+
+func is_valid_fruit(fruit: Fruit, _customer: Customer) -> bool:
+	for wanted_fruit in _customer.wanted_fruits:
+		if wanted_fruit == fruit.fruit_enum:
+			return true
+	
+	return false
+
+func process_valid_fruit(fruit: Fruit):
+	drag_drop_controller.drag_stop()
+	var horn = fruit.original_horn
+	horn.dequeue_fruit()
+	fruit.queue_free()

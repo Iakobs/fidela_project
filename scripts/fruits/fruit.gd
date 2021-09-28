@@ -2,6 +2,7 @@ extends Area
 
 class_name Fruit
 
+var fruit_enum: int
 var original_position: Vector3 setget set_original_position
 var original_horn setget set_original_horn
 
