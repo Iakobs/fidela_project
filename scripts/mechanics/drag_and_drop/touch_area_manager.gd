@@ -14,7 +14,7 @@ func setup(props: TouchAreaProps):
 		props.right_horn_slots,
 		props.fruits_parent
 	)
-	customer.draw_balloon(WantedFruit.new(FruitFactory.FRUITS.APPLE, 3))
+	customer.set_wanted_fruit(WantedFruit.new(FruitFactory.FRUITS.APPLE, 3))
 	
 	left_horn.connect("input_event", self, "_on_horn_input_event", [left_horn])
 	right_horn.connect("input_event", self, "_on_horn_input_event", [right_horn])

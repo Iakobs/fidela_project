@@ -2,6 +2,7 @@ extends Area
 
 class_name Customer
 
+var wanted_fruit: WantedFruit setget set_wanted_fruit
 var points: int
 
 onready var viewport = $Viewport
@@ -19,10 +20,17 @@ func _ready():
 	texture.texture = null
 	label.text = ""
 
-func feed(fruit: int):
-	pass
+func set_wanted_fruit(_wanted_fruit: WantedFruit):
+	wanted_fruit = _wanted_fruit
+	draw_balloon()
 
-func draw_balloon(wanted_fruit: WantedFruit):
+func feed(fruit: int):
+	if wanted_fruit.fruit == fruit:
+		self.wanted_fruit.amount -= 1
+		if wanted_fruit.amount == 0:
+			leave()
+
+func draw_balloon():
 	var fruit = wanted_fruit.fruit
 	match(fruit):
 		FruitFactory.FRUITS.APPLE:
@@ -35,4 +43,6 @@ func draw_balloon(wanted_fruit: WantedFruit):
 			texture.texture = BananaIcon
 	
 	label.text = "X %s" % wanted_fruit.amount
-		
+
+func leave():
+	queue_free()
