@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/src/banana.glb" type="PackedScene" id=1]
+[ext_resource path="res://scripts/ui/fruit_button_3d.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.462014, 0.35136, 0.333707 )
+
+[node name="Banana" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 2 )
+fruit = 3
+
+[node name="banana001" parent="." index="0"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28318, -0.238993, 0.0202363 )
+shape = SubResource( 1 )
