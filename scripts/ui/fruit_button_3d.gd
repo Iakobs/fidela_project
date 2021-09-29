@@ -10,11 +10,11 @@ func set_horn(_horn: int):
 	horn = _horn
 
 func _on_input_event(
-	camera,
+	_camera,
 	event,
-	click_position,
-	click_normal,
-	shape_idx
+	_click_position,
+	_click_normal,
+	_shape_idx
 ):
 	if event is InputEventScreenTouch and event.is_pressed():
 		print("Publishing event %s" % 

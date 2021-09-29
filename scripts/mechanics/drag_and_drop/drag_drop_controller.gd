@@ -1,5 +1,7 @@
 extends Node
 
+class_name DragDropController
+
 const DraggingArea = preload("res://scenes/drag_and_drop/DraggingArea.tscn")
 
 export (float) var ray_length = 100

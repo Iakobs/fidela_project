@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/fidela/Fidela.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/test/test_scene.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scripts/mechanics/drag_and_drop/drag_drop_controller.gd" type="Script" id=5]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/customer_touch_area.gd" type="Script" id=6]
 [ext_resource path="res://scenes/ui/FruitButtons.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/event_bus/event_consumer_interface.gd" type="Script" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.227451, 0.360784, 0.207843, 1 )
@@ -93,6 +94,9 @@ horn = 1
 
 [node name="Banana" parent="RightFruitButtons" index="3"]
 horn = 1
+
+[node name="EventConsumerInterface" type="Node" parent="."]
+script = ExtResource( 8 )
 
 [editable path="LeftFruitButtons"]
 [editable path="RightFruitButtons"]
