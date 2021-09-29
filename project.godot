@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Area",
 "class": "Customer",
 "language": "GDScript",
-"path": "res://scripts/mechanics/drag_and_drop/customer_touch_area.gd"
+"path": "res://scripts/characters/customers/customer.gd"
 }, {
 "base": "Node",
 "class": "DragDropController",
@@ -68,6 +68,11 @@ _global_script_classes=[ {
 "class": "TouchAreaProps",
 "language": "GDScript",
 "path": "res://scripts/mechanics/drag_and_drop/touch_area_props.gd"
+}, {
+"base": "Reference",
+"class": "WantedFruit",
+"language": "GDScript",
+"path": "res://scripts/characters/customers/wanted_fruit.gd"
 } ]
 _global_script_class_icons={
 "Customer": "",
@@ -81,7 +86,8 @@ _global_script_class_icons={
 "GitAPI": "",
 "HornSlots": "",
 "HornTouchArea": "",
-"TouchAreaProps": ""
+"TouchAreaProps": "",
+"WantedFruit": ""
 }
 
 [application]
@@ -95,6 +101,11 @@ config/icon="res://fidela_icon.png"
 Global="*res://scripts/global.gd"
 EventBus="*res://scripts/event_bus/event_bus.gd"
 EventNamespaces="*res://scripts/event_bus/event_namespaces.gd"
+
+[display]
+
+window/size/width=1080
+window/size/height=486
 
 [gdnative]
 

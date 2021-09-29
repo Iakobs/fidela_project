@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/fidela/Fidela.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/test/test_scene.gd" type="Script" id=2]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/horn_touch_area.gd" type="Script" id=3]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/touch_area_manager.gd" type="Script" id=4]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/drag_drop_controller.gd" type="Script" id=5]
-[ext_resource path="res://scripts/mechanics/drag_and_drop/customer_touch_area.gd" type="Script" id=6]
+[ext_resource path="res://scenes/customers/Customer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ui/FruitButtons.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/event_bus/event_consumer_interface.gd" type="Script" id=8]
 
@@ -18,10 +18,6 @@ size = Vector3( 20, 15, 0.25 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 0.643013, 0.19864, 0.262275 )
-
-[sub_resource type="CapsuleShape" id=4]
-
-[sub_resource type="CapsuleMesh" id=5]
 
 [node name="TestScene" type="Spatial"]
 script = ExtResource( 2 )
@@ -63,19 +59,8 @@ shape = SubResource( 3 )
 [node name="DragDropController" type="Node" parent="TouchArea"]
 script = ExtResource( 5 )
 
-[node name="CustomerTouchArea" type="Area" parent="TouchArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66204, 0, 1.93109 )
-collision_mask = 2
-script = ExtResource( 6 )
-
-[node name="CollisionShape" type="CollisionShape" parent="TouchArea/CustomerTouchArea"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 4 )
-
-[node name="CustomerMesh" type="MeshInstance" parent="TouchArea/CustomerTouchArea"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00215006, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = null
+[node name="Customer" parent="TouchArea" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00966, 0, 1.57123 )
 
 [node name="LeftFruitButtons" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90968, -1.62035, 2.57757 )

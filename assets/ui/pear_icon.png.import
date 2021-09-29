@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/pear_icon.png-79f1a380a5c4f9ab2f05471ff8ff6e08.s3tc.stex"
+path.etc2="res://.import/pear_icon.png-79f1a380a5c4f9ab2f05471ff8ff6e08.etc2.stex"
+path.etc="res://.import/pear_icon.png-79f1a380a5c4f9ab2f05471ff8ff6e08.etc.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc2", "etc" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/ui/pear_icon.png"
+dest_files=[ "res://.import/pear_icon.png-79f1a380a5c4f9ab2f05471ff8ff6e08.s3tc.stex", "res://.import/pear_icon.png-79f1a380a5c4f9ab2f05471ff8ff6e08.etc2.stex", "res://.import/pear_icon.png-79f1a380a5c4f9ab2f05471ff8ff6e08.etc.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=true
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
