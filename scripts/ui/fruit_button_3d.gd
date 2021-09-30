@@ -17,11 +17,8 @@ func _on_input_event(
 	_shape_idx
 ):
 	if event is InputEventScreenTouch and event.is_pressed():
-		print("Publishing event %s" % 
-			[EventNamespaces.FruitButtons.BUTTON_PRESSED_EVENT]
-		)
 		EventBus.publish(
-			EventNamespaces.FruitButtons.BUTTON_PRESSED_EVENT,
+			EventNamespaces.FruitButtonsEvents.BUTTON_PRESSED_EVENT,
 			{"fruit": fruit, "horn": horn}
 		)
 

@@ -18,8 +18,12 @@ func _ready():
 func subscriptions() -> Array:
 	return [
 		EventBusSubscription.new(
-			EventNamespaces.FruitButtons.BUTTON_PRESSED_EVENT,
+			EventNamespaces.FruitButtonsEvents.BUTTON_PRESSED_EVENT,
 			"_on_fruit_button_pressed"
+		),
+		EventBusSubscription.new(
+			EventNamespaces.CustomerEvents.CUSTOMER_LEFT_EVENT,
+			"_on_customer_left"
 		)
 	]
 
@@ -37,6 +41,10 @@ func _on_fruit_button_pressed(payload: Dictionary):
 		FruitFactory.FRUITS.BANANA:
 			fruit_ref = get_banana
 	add_fruit(fruit_ref, horn)
+
+func _on_customer_left(payload: Dictionary):
+	yield(get_tree().create_timer(1), "timeout")
+	get_tree().change_scene("res://scenes/ui/menus/LevelCompletedScreen.tscn")
 
 func add_fruit(fruit: FuncRef, horn: int):
 	touch_area.add_fruit(fruit.call_func(), horn)

@@ -45,4 +45,5 @@ func draw_balloon():
 	label.text = "X %s" % wanted_fruit.amount
 
 func leave():
+	EventBus.publish(EventNamespaces.CustomerEvents.CUSTOMER_LEFT_EVENT)
 	queue_free()
