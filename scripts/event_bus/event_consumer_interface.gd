@@ -12,6 +12,6 @@ func _exit_tree():
 func _get_configuration_warning():
 	if not get_parent().has_method("subscriptions"):
 		return """Parent node must implement method subscriptions that returns
-		a list of EventBusListener"""
+		a list of EventBusSubscription"""
 	
 	return ""
