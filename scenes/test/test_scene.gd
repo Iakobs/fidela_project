@@ -55,7 +55,7 @@ func _on_fruit_generation_end(payload: Dictionary):
 
 func _on_customer_left(_payload: Dictionary):
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().change_scene("res://scenes/ui/menus/LevelCompletedScreen.tscn")
+	SceneChanger.change_scene("res://scenes/ui/menus/LevelCompletedScreen.tscn", self)
 
 func add_fruit(fruit: FuncRef, horn: int):
 	touch_area.add_fruit(fruit.call_func(), horn)

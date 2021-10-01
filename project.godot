@@ -98,7 +98,8 @@ config/icon="res://fidela_icon.png"
 
 [autoload]
 
-Global="*res://scenes/Global.tscn"
+Global="*res://scenes/autoloads/Global.tscn"
+SceneChanger="*res://scripts/autoloads/scene_changer.gd"
 EventBus="*res://scripts/event_bus/event_bus.gd"
 EventNamespaces="*res://scripts/event_bus/event_namespaces.gd"
 
