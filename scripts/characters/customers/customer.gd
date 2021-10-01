@@ -32,14 +32,14 @@ func feed(fruit: int):
 
 func draw_balloon():
 	var fruit = wanted_fruit.fruit
-	match(fruit):
-		FruitFactory.FRUITS.APPLE:
+	match fruit:
+		Global.FRUITS.APPLE:
 			texture.texture = AppleIcon
-		FruitFactory.FRUITS.PEAR:
+		Global.FRUITS.PEAR:
 			texture.texture = PearIcon
-		FruitFactory.FRUITS.PINEAPPLE:
+		Global.FRUITS.PINEAPPLE:
 			texture.texture = PineappleIcon
-		FruitFactory.FRUITS.BANANA:
+		Global.FRUITS.BANANA:
 			texture.texture = BananaIcon
 	
 	label.text = "X %s" % wanted_fruit.amount

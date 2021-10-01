@@ -78,16 +78,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00966, 0, 1.57123 )
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.47902, -1.62035, 1.24716 )
 
 [node name="Balloon" parent="LeftFruitButtons" index="4"]
-transform = Transform( 0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0.337, 0.192, -0.284 )
+transform = Transform( 0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0.337, 0.192, -0.4 )
 flip_v = true
 
 [node name="RightFruitButtons" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.47902, 1.54866, 1.24716 )
+horn = 1
 
 [node name="AppleButton" parent="RightFruitButtons" index="0"]
 horn = 1
 
-[node name="Pear" parent="RightFruitButtons" index="1"]
+[node name="PearButton" parent="RightFruitButtons" index="1"]
 horn = 1
 
 [node name="Pineapple" parent="RightFruitButtons" index="2"]

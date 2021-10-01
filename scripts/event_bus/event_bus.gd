@@ -11,8 +11,6 @@ message passing between arbitrary objects. Add this as a singleton
 to your project.
 """
 
-const CONSUMER_GROUP: String = "consumer"
-
 var consumers = EventBusConsumers.new()
 
 func add_listener(node: Node):

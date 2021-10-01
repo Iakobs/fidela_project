@@ -6,11 +6,12 @@
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.462014, 0.35136, 0.333707 )
 
-[node name="Banana" instance=ExtResource( 1 )]
+[node name="BananaButton" instance=ExtResource( 1 )]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 2 )
 fruit = 3
+generation_time = 4.0
 
 [node name="banana001" parent="." index="0"]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
@@ -18,3 +19,5 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28318, -0.238993, 0.0202363 )
 shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="." index="2"]

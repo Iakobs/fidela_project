@@ -14,11 +14,20 @@ func setup(props: TouchAreaProps):
 		props.right_horn_slots,
 		props.fruits_parent
 	)
-	customer.set_wanted_fruit(WantedFruit.new(FruitFactory.FRUITS.APPLE, 3))
+	customer.set_wanted_fruit(WantedFruit.new(Global.FRUITS.APPLE, 3))
 	
 	left_horn.connect("input_event", self, "_on_horn_input_event", [left_horn])
 	right_horn.connect("input_event", self, "_on_horn_input_event", [right_horn])
 	customer.connect("area_entered", self, "_on_customer_entered", [customer])
+
+func can_add_fruit(horn: int) -> bool:
+	match horn:
+		Global.HORNS.LEFT:
+			return not left_horn.is_horn_full()
+		Global.HORNS.RIGHT:
+			return not right_horn.is_horn_full()
+		_:
+			return false
 
 func add_fruit(fruit: Fruit, horn: int):
 	match horn:
@@ -43,11 +52,11 @@ func _on_horn_input_event(_camera, event, _click_position,
 
 func _on_customer_entered(area: Area, receiver: Area):
 	if area is Fruit and receiver is Customer:
+		remove_delivered_fruit(area)
 		receiver.feed(area.fruit_enum)
-		process_delivered_fruit(area)
 
-func process_delivered_fruit(fruit: Fruit):
-	drag_drop_controller.drag_stop()
+func remove_delivered_fruit(fruit: Fruit):
 	var horn = fruit.original_horn
+	drag_drop_controller.drag_stop()
 	horn.dequeue_fruit()
 	fruit.queue_free()

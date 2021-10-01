@@ -10,6 +10,9 @@ func setup(_slots: HornSlots, _fruit_parent: Node):
 	slots = _slots
 	fruit_parent = _fruit_parent
 
+func is_horn_full() -> bool:
+	return fruit_queue.size() == slots.size()
+
 func get_fruit_to_drag() -> Fruit:
 	if not fruit_queue.empty():
 		var path_to_fruit = fruit_queue[0].remote_path
@@ -21,14 +24,16 @@ func get_fruit_to_drag() -> Fruit:
 	return null
 
 func queue_fruit(fruit: Fruit):
-	if (fruit_queue.size() == slots.size()):
+	if is_horn_full():
 		return
 	
 	var remote_transform = slots.next_slot()
 	fruit_queue.push_back(remote_transform)
 	
+	fruit.visible = false
 	fruit_parent.add_child(fruit)
 	remote_transform.remote_path = fruit.get_path()
+	fruit.visible = true
 
 func dequeue_fruit():
 	if fruit_queue.empty():

@@ -7,42 +7,27 @@ const Banana = preload("res://scenes/fruits/Banana.tscn")
 
 class_name FruitFactory
 
-enum FRUITS {
-	APPLE,
-	PEAR,
-	PINEAPPLE,
-	BANANA
-}
-
 static func get_apple() -> Node:
-	return get_fruit(FRUITS.APPLE)
+	return get_fruit(Global.FRUITS.APPLE)
 
 static func get_pear() -> Node:
-	return get_fruit(FRUITS.PEAR)
+	return get_fruit(Global.FRUITS.PEAR)
 
 static func get_pineapple() -> Node:
-	return get_fruit(FRUITS.PINEAPPLE)
+	return get_fruit(Global.FRUITS.PINEAPPLE)
 
 static func get_banana() -> Node:
-	return get_fruit(FRUITS.BANANA)
+	return get_fruit(Global.FRUITS.BANANA)
 
 static func get_fruit(fruit: int) -> Node:
 	match fruit:
-		FRUITS.APPLE:
-			var fruit_instance = Apple.instance()
-			fruit_instance.fruit_enum = FRUITS.APPLE
-			return fruit_instance
-		FRUITS.PEAR:
-			var fruit_instance = Pear.instance()
-			fruit_instance.fruit_enum = FRUITS.PEAR
-			return fruit_instance
-		FRUITS.PINEAPPLE:
-			var fruit_instance = Pineapple.instance()
-			fruit_instance.fruit_enum = FRUITS.PINEAPPLE
-			return fruit_instance
-		FRUITS.BANANA:
-			var fruit_instance = Banana.instance()
-			fruit_instance.fruit_enum = FRUITS.BANANA
-			return fruit_instance
+		Global.FRUITS.APPLE:
+			return Apple.instance()
+		Global.FRUITS.PEAR:
+			return Pear.instance()
+		Global.FRUITS.PINEAPPLE:
+			return Pineapple.instance()
+		Global.FRUITS.BANANA:
+			return Banana.instance()
 		_:
 			return null

@@ -18,8 +18,12 @@ func _ready():
 func subscriptions() -> Array:
 	return [
 		EventBusSubscription.new(
-			EventNamespaces.FruitButtonsEvents.BUTTON_PRESSED_EVENT,
+			EventNamespaces.FruitEvents.BUTTON_PRESSED_EVENT,
 			"_on_fruit_button_pressed"
+		),
+		EventBusSubscription.new(
+			EventNamespaces.FruitEvents.GENERATION_END_EVENT,
+			"_on_fruit_generation_end"
 		),
 		EventBusSubscription.new(
 			EventNamespaces.CustomerEvents.CUSTOMER_LEFT_EVENT,
@@ -28,21 +32,28 @@ func subscriptions() -> Array:
 	]
 
 func _on_fruit_button_pressed(payload: Dictionary):
+	if touch_area.can_add_fruit(payload.horn):
+		EventBus.publish(
+			EventNamespaces.FruitEvents.GENERATION_START_EVENT,
+			{ "fruit": payload.fruit, "horn": payload.horn}
+		)
+
+func _on_fruit_generation_end(payload: Dictionary):
 	var fruit = payload.fruit
 	var horn = payload.horn
 	var fruit_ref
 	match fruit:
-		FruitFactory.FRUITS.APPLE:
+		Global.FRUITS.APPLE:
 			fruit_ref = get_apple
-		FruitFactory.FRUITS.PEAR:
+		Global.FRUITS.PEAR:
 			fruit_ref = get_pear
-		FruitFactory.FRUITS.PINEAPPLE:
+		Global.FRUITS.PINEAPPLE:
 			fruit_ref = get_pineapple
-		FruitFactory.FRUITS.BANANA:
+		Global.FRUITS.BANANA:
 			fruit_ref = get_banana
 	add_fruit(fruit_ref, horn)
 
-func _on_customer_left(payload: Dictionary):
+func _on_customer_left(_payload: Dictionary):
 	yield(get_tree().create_timer(1), "timeout")
 	get_tree().change_scene("res://scenes/ui/menus/LevelCompletedScreen.tscn")
 

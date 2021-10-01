@@ -10,6 +10,8 @@ extents = Vector3( 0.295802, 0.230842, 0.226934 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
+fruit_enum = 3
+generation_time = 5.0
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.196794, -0.171804, 0.0202363 )
