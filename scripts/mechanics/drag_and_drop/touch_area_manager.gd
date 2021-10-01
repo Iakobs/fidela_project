@@ -3,7 +3,6 @@ extends Node
 onready var drag_drop_controller = $DragDropController
 onready var left_horn = $LeftHornTouchArea
 onready var right_horn = $RightHornTouchArea
-onready var customer = $Customer
 
 func setup(props: TouchAreaProps):
 	left_horn.setup(
@@ -14,11 +13,9 @@ func setup(props: TouchAreaProps):
 		props.right_horn_slots,
 		props.fruits_parent
 	)
-	customer.set_wanted_fruit(WantedFruit.new(Global.FRUITS.APPLE, 3))
 	
 	left_horn.connect("input_event", self, "_on_horn_input_event", [left_horn])
 	right_horn.connect("input_event", self, "_on_horn_input_event", [right_horn])
-	customer.connect("area_entered", self, "_on_customer_entered", [customer])
 
 func can_add_fruit(horn: int) -> bool:
 	match horn:

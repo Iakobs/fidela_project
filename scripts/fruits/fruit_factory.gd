@@ -1,11 +1,11 @@
 extends Reference
 
+class_name FruitFactory
+
 const Apple = preload("res://scenes/fruits/Apple.tscn")
 const Pear = preload("res://scenes/fruits/Pear.tscn")
 const Pineapple = preload("res://scenes/fruits/Pineapple.tscn")
 const Banana = preload("res://scenes/fruits/Banana.tscn")
-
-class_name FruitFactory
 
 static func get_apple() -> Node:
 	return get_fruit(Global.FRUITS.APPLE)

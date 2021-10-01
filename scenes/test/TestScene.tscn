@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/fidela/Fidela.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/test/test_scene.gd" type="Script" id=2]
+[ext_resource path="res://scripts/test/test_scene.gd" type="Script" id=2]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/horn_touch_area.gd" type="Script" id=3]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/touch_area_manager.gd" type="Script" id=4]
 [ext_resource path="res://scripts/mechanics/drag_and_drop/drag_drop_controller.gd" type="Script" id=5]
-[ext_resource path="res://scenes/customers/Customer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ui/fruit_generation/FruitButtons.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/event_bus/event_consumer_interface.gd" type="Script" id=8]
 [ext_resource path="res://resources/textures/GrassTexture.tres" type="Texture" id=9]
 [ext_resource path="res://scenes/ui/HUD.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/customers/CustomerSpawnPoint.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.756863, 0.792157, 0.435294, 1 )
@@ -71,9 +71,6 @@ shape = SubResource( 3 )
 [node name="DragDropController" type="Node" parent="TouchArea"]
 script = ExtResource( 5 )
 
-[node name="Customer" parent="TouchArea" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00966, 0, 1.57123 )
-
 [node name="LeftFruitButtons" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.47902, -1.62035, 1.24716 )
 
@@ -98,6 +95,9 @@ horn = 1
 horn = 1
 
 [node name="HUD" parent="." instance=ExtResource( 10 )]
+
+[node name="CustomerSpawnPoint" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4497, 0, 1.53459 )
 
 [editable path="LeftFruitButtons"]
 [editable path="RightFruitButtons"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/characters/customers/customer_path.gd" type="Script" id=2]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0.000217155, 0.000651356, 0, 0, 0, 0, 0, 0, 0, 6.52215, 0.0066521, 0 ),
+"tilts": PoolRealArray( 0, 0 )
+}
+
+[node name="CustomerPath" type="Path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00043422, -0.000434238, 0 )
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PathFollow" type="PathFollow" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000217155, 0.000651356, 0 )
+loop = false
