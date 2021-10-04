@@ -12,7 +12,6 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
 fruit_enum = 2
-generation_time = 3.5
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="1"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.199784, 0 )

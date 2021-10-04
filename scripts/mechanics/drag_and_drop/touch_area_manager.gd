@@ -19,25 +19,25 @@ func setup(props: TouchAreaProps):
 
 func can_add_fruit(horn: int) -> bool:
 	match horn:
-		Global.HORNS.LEFT:
+		Enums.HORNS.LEFT:
 			return not left_horn.is_horn_full()
-		Global.HORNS.RIGHT:
+		Enums.HORNS.RIGHT:
 			return not right_horn.is_horn_full()
 		_:
 			return false
 
 func add_fruit(fruit: Fruit, horn: int):
 	match horn:
-		Global.HORNS.LEFT:
+		Enums.HORNS.LEFT:
 			left_horn.queue_fruit(fruit)
-		Global.HORNS.RIGHT:
+		Enums.HORNS.RIGHT:
 			right_horn.queue_fruit(fruit)
 
 func remove_fruit(horn: int):
 	match horn:
-		Global.HORNS.LEFT:
+		Enums.HORNS.LEFT:
 			left_horn.dequeue_fruit()
-		Global.HORNS.RIGHT:
+		Enums.HORNS.RIGHT:
 			right_horn.dequeue_fruit()
 
 func _on_horn_input_event(_camera, event, _click_position, 

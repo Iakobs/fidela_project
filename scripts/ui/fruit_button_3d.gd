@@ -3,13 +3,12 @@ extends Area
 const SCALING_ON_CLICKING_FACTOR: float = 0.9
 const BUTTON_PRESSED_TWEEN_TIME: float = 0.01
 
-export(Global.FRUITS) var fruit: int
-export(Global.HORNS) var horn: int
-export(float, 0, 10) var generation_time: float
+export(Enums.FRUITS) var fruit: int
 
 onready var tween = $Tween
 
 var original_scale: Vector3
+var horn: int
 
 func _ready():
 	original_scale = scale

@@ -1,49 +1,53 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/ui/fruit_generation/BananaButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/fruit_generation/AppleButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/fruit_generation/PineappleButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ui/fruit_generation/PearButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ui/customer/Balloon.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/ui/misc/Hourglass.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/ui/icons/balloon_centered.png" type="Texture" id=6]
 [ext_resource path="res://scripts/ui/fruit_buttons.gd" type="Script" id=7]
 [ext_resource path="res://scripts/event_bus/event_consumer_interface.gd" type="Script" id=8]
+[ext_resource path="res://scenes/ui/misc/ProgressBar3D.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 4.18659, 0.0640928, 2.3281 )
+extents = Vector3( 5.02839, 0.0640928, 5.37698 )
 
 [node name="FruitButtons" type="Spatial"]
 script = ExtResource( 7 )
 
-[node name="AppleButton" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22045, 0, 0 )
-
-[node name="PearButton" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.459721, 0, 0 )
-
-[node name="Pineapple" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42141, -0.213442, 0 )
-
-[node name="Banana" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17119, 0.207969, 0 )
-
-[node name="Balloon" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0.337, -0.156, -0.4 )
-flip_h = true
-
-[node name="Area" type="Area" parent="Balloon"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Balloon/Area"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.778487, 0 )
-shape = SubResource( 1 )
-
 [node name="EventConsumerInterface" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Buttons" type="Spatial" parent="."]
 
-[node name="HourglassHolder" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.227498, 0, 1.0111 )
+[node name="AppleButton" parent="Buttons" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.42848, 0, 0 )
 
-[node name="Hourglass" parent="HourglassHolder" instance=ExtResource( 6 )]
-transform = Transform( -2, 3.01992e-07, 0, -3.01992e-07, -2, 0, 0, 0, 2, 0, 0, 0 )
+[node name="PearButton" parent="Buttons" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667754, 0, 0 )
+
+[node name="PineappleButton" parent="Buttons" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213377, -0.213442, 0 )
+
+[node name="BananaButton" parent="Buttons" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.963157, 0.207969, 0 )
+
+[node name="Balloon" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0.432103, 0, 0, 0, 0.213582, 0, 0, 0, 1, 0, 0, -0.6 )
+texture = ExtResource( 6 )
+
+[node name="Area" type="Area" parent="Balloon"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="Balloon/Area"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="ProgressBarHolder" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+
+[node name="ProgressBar3D" parent="ProgressBarHolder" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )

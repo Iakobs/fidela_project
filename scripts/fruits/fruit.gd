@@ -2,7 +2,7 @@ extends Area
 
 class_name Fruit
 
-export(Global.FRUITS) var fruit_enum: int
+export(Enums.FRUITS) var fruit_enum: int
 
 var original_position: Vector3 setget set_original_position
 var original_horn setget set_original_horn

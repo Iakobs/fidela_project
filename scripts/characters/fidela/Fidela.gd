@@ -5,9 +5,9 @@ onready var right_horn = $RightHorn
 
 func get_horn_slots(horn: int) -> Array:
 	match horn:
-		Global.HORNS.LEFT:
+		Enums.HORNS.LEFT:
 			return left_horn
-		Global.HORNS.RIGHT:
+		Enums.HORNS.RIGHT:
 			return right_horn
 		_:
 			return []

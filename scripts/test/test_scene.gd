@@ -14,13 +14,13 @@ onready var spawn_point = $CustomerSpawnPoint
 func _ready():
 	touch_area.setup(TouchAreaProps.new(
 		self,
-		fidela.get_horn_slots(Global.HORNS.LEFT),
-		fidela.get_horn_slots(Global.HORNS.RIGHT)
+		fidela.get_horn_slots(Enums.HORNS.LEFT),
+		fidela.get_horn_slots(Enums.HORNS.RIGHT)
 	))
 	
 	var customer = Customer.instance()
 	customer.wanted_fruit = WantedFruit.new(
-		Global.FRUITS.APPLE,
+		Enums.FRUITS.APPLE,
 		3
 	)
 	customer.connect("area_entered", touch_area, "_on_customer_entered", [customer])
@@ -58,13 +58,13 @@ func _on_fruit_generation_end(payload: Dictionary):
 	var horn = payload.horn
 	var fruit_ref
 	match fruit:
-		Global.FRUITS.APPLE:
+		Enums.FRUITS.APPLE:
 			fruit_ref = get_apple
-		Global.FRUITS.PEAR:
+		Enums.FRUITS.PEAR:
 			fruit_ref = get_pear
-		Global.FRUITS.PINEAPPLE:
+		Enums.FRUITS.PINEAPPLE:
 			fruit_ref = get_pineapple
-		Global.FRUITS.BANANA:
+		Enums.FRUITS.BANANA:
 			fruit_ref = get_banana
 	add_fruit(fruit_ref, horn)
 

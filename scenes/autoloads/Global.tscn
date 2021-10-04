@@ -4,7 +4,3 @@
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
-apple_generation_time = 1.1
-pear_generation_time = 2.5
-pineapple_generation_time = 3.5
-banana_generation_time = 5.0

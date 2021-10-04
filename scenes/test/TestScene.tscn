@@ -37,6 +37,7 @@ transform = Transform( 0.512062, 0.0800852, -0.855207, -0.324297, 0.93998, -0.10
 light_color = Color( 0.905882, 0.776471, 0.596078, 1 )
 
 [node name="Floor" type="MeshInstance" parent="Environment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.125 )
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -71,33 +72,15 @@ shape = SubResource( 3 )
 [node name="DragDropController" type="Node" parent="TouchArea"]
 script = ExtResource( 5 )
 
-[node name="LeftFruitButtons" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.47902, -1.62035, 1.24716 )
-
-[node name="Balloon" parent="LeftFruitButtons" index="4"]
-transform = Transform( 0.6, 0, 0, 0, 0.3, 0, 0, 0, 0.4, 0.337, 0.192, -0.4 )
-flip_v = true
-
 [node name="RightFruitButtons" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 2.47902, 1.54866, 1.24716 )
+transform = Transform( 1.02, 0, 0, 0, 1.02, 0, 0, 0, 1.02, 1.80596, 1.66582, 1.24716 )
 horn = 1
 
-[node name="AppleButton" parent="RightFruitButtons" index="0"]
-horn = 1
-
-[node name="PearButton" parent="RightFruitButtons" index="1"]
-horn = 1
-
-[node name="Pineapple" parent="RightFruitButtons" index="2"]
-horn = 1
-
-[node name="Banana" parent="RightFruitButtons" index="3"]
-horn = 1
+[node name="LeftFruitButtons" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1.02, 0, 0, 0, 1.02, 0, 0, 0, 1.02, 1.80596, -1.6145, 1.24716 )
+mode = 1
 
 [node name="HUD" parent="." instance=ExtResource( 10 )]
 
 [node name="CustomerSpawnPoint" parent="." instance=ExtResource( 11 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4497, 0, 1.53459 )
-
-[editable path="LeftFruitButtons"]
-[editable path="RightFruitButtons"]

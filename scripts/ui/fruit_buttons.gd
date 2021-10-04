@@ -1,14 +1,22 @@
 extends Spatial
 
-export(Global.HORNS) var horn: int
+const ProgressBar = preload("res://scripts/ui/misc/progress_bar.gd")
+
+export(Enums.HORNS) var horn: int
+export(int, "NORMAL", "FLIPPED") var mode: int
 
 onready var balloon = $Balloon
-onready var hourglass = $HourglassHolder/Hourglass
-onready var timer = $Timer
+onready var progress_bar = $ProgressBarHolder/ProgressBar3D
+onready var buttons = $Buttons
 
 func _ready():
-	hourglass.visible = false
-	timer.connect("timeout", self, "_on_timer_timeout")
+	if mode == 1:
+		balloon.flip_v = true
+	
+	progress_bar.visible = false
+	
+	for child in buttons.get_children():
+		child.horn = horn
 
 func subscriptions() -> Array:
 	return [
@@ -24,22 +32,21 @@ func _on_fruit_generation_start(payload: Dictionary):
 		var fruit = payload.fruit
 		var generation_time = Global.get_generation_time(fruit)
 
-		hourglass.visible = true
-		balloon.translation.z *= -1
-		balloon.opacity = 0.5
-#		timer.wait_time = fruit.generation_time
-#		timer.start()
+		disable_during_generation(generation_time)
 		yield(get_tree().create_timer(generation_time), "timeout")
-		hourglass.visible = false
-		balloon.translation.z *= -1
-		balloon.opacity = 1
+		enable()
 		EventBus.publish(
 			EventNamespaces.FruitEvents.GENERATION_END_EVENT,
 			{ "fruit": fruit, "horn": horn }
 		)
 
-func _on_timer_timeout():
-	hourglass.visible = false
+func disable_during_generation(dutation: float):
+	progress_bar.visible = true
+	progress_bar.start(dutation)
+	balloon.translation.z *= -1
+	balloon.opacity = 0.5
+
+func enable():
+	progress_bar.visible = false
 	balloon.translation.z *= -1
 	balloon.opacity = 1
-	timer.stop()

@@ -8,26 +8,26 @@ const Pineapple = preload("res://scenes/fruits/Pineapple.tscn")
 const Banana = preload("res://scenes/fruits/Banana.tscn")
 
 static func get_apple() -> Node:
-	return get_fruit(Global.FRUITS.APPLE)
+	return get_fruit(Enums.FRUITS.APPLE)
 
 static func get_pear() -> Node:
-	return get_fruit(Global.FRUITS.PEAR)
+	return get_fruit(Enums.FRUITS.PEAR)
 
 static func get_pineapple() -> Node:
-	return get_fruit(Global.FRUITS.PINEAPPLE)
+	return get_fruit(Enums.FRUITS.PINEAPPLE)
 
 static func get_banana() -> Node:
-	return get_fruit(Global.FRUITS.BANANA)
+	return get_fruit(Enums.FRUITS.BANANA)
 
 static func get_fruit(fruit: int) -> Node:
 	match fruit:
-		Global.FRUITS.APPLE:
+		Enums.FRUITS.APPLE:
 			return Apple.instance()
-		Global.FRUITS.PEAR:
+		Enums.FRUITS.PEAR:
 			return Pear.instance()
-		Global.FRUITS.PINEAPPLE:
+		Enums.FRUITS.PINEAPPLE:
 			return Pineapple.instance()
-		Global.FRUITS.BANANA:
+		Enums.FRUITS.BANANA:
 			return Banana.instance()
 		_:
 			return null

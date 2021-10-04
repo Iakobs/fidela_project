@@ -41,13 +41,13 @@ func feed(fruit: int):
 func update_balloon():
 	var fruit = wanted_fruit.fruit
 	match fruit:
-		Global.FRUITS.APPLE:
+		Enums.FRUITS.APPLE:
 			texture.texture = Global.AppleIcon
-		Global.FRUITS.PEAR:
+		Enums.FRUITS.PEAR:
 			texture.texture = Global.PearIcon
-		Global.FRUITS.PINEAPPLE:
+		Enums.FRUITS.PINEAPPLE:
 			texture.texture = Global.PineappleIcon
-		Global.FRUITS.BANANA:
+		Enums.FRUITS.BANANA:
 			texture.texture = Global.BananaIcon
 	
 	label.text = "X %s" % wanted_fruit.amount
