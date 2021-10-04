@@ -9,11 +9,14 @@ onready var balloon = $Balloon
 onready var progress_bar = $ProgressBarHolder/ProgressBar3D
 onready var buttons = $Buttons
 
+var pressed_fruit: int
+
 func _ready():
 	if mode == 1:
 		balloon.flip_v = true
 	
 	progress_bar.visible = false
+	progress_bar.connect("progress_completed", self, "_on_progress_completed")
 	
 	for child in buttons.get_children():
 		child.horn = horn
@@ -27,18 +30,18 @@ func subscriptions() -> Array:
 	]
 
 func _on_fruit_generation_start(payload: Dictionary):
+	pressed_fruit = payload.fruit
 	var pressed_horn = payload.horn
 	if pressed_horn == horn:
-		var fruit = payload.fruit
-		var generation_time = Global.get_generation_time(fruit)
-
+		var generation_time = Global.get_generation_time(pressed_fruit)
 		disable_during_generation(generation_time)
-		yield(get_tree().create_timer(generation_time), "timeout")
-		enable()
-		EventBus.publish(
-			EventNamespaces.FruitEvents.GENERATION_END_EVENT,
-			{ "fruit": fruit, "horn": horn }
-		)
+
+func _on_progress_completed():
+	enable()
+	EventBus.publish(
+		EventNamespaces.FruitEvents.GENERATION_END_EVENT,
+		{ "fruit": pressed_fruit, "horn": horn }
+	)
 
 func disable_during_generation(dutation: float):
 	progress_bar.visible = true

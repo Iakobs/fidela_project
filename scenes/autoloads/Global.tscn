@@ -4,3 +4,4 @@
 
 [node name="Global" type="Node"]
 script = ExtResource( 1 )
+banana_generation_time = 50.0
