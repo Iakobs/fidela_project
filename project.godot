@@ -70,6 +70,11 @@ _global_script_classes=[ {
 "path": "res://scripts/mechanics/drag_and_drop/horn_touch_area.gd"
 }, {
 "base": "Reference",
+"class": "PatienceFactory",
+"language": "GDScript",
+"path": "res://scripts/characters/customers/patience_factory.gd"
+}, {
+"base": "Reference",
 "class": "TouchAreaProps",
 "language": "GDScript",
 "path": "res://scripts/mechanics/drag_and_drop/touch_area_props.gd"
@@ -92,6 +97,7 @@ _global_script_class_icons={
 "GitAPI": "",
 "HornSlots": "",
 "HornTouchArea": "",
+"PatienceFactory": "",
 "TouchAreaProps": "",
 "WantedFruit": ""
 }
